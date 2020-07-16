@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
+import Icon from '../components/Icon';
 
 const About = () => {
     return (
@@ -13,6 +14,10 @@ const About = () => {
               The design is implemented with CSS and media queries without external packages and icons are used from the Material Design Iconic Font. A booting animation is also implemented with Vanilla JavaScript.
             </p>
             <br/>
+            <p>
+              The UI is responsive so please have look at the published version on your smartphone
+              <Icon type="mood" size="lg" className="p text-primary"/>.
+            </p>
           </div>
         </Fragment>
     )
