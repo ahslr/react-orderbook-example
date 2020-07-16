@@ -153,11 +153,11 @@ a {
 }
 
 .fill-bid {
-    background-image: linear-gradient(to left, rgba(2,192,118,0.15) 100%, white 0%);
+    background-image: linear-gradient(to left, rgba(2,192,118,0.15) 100%, var(--dark-color) 0%);
 }
 
 .fill-ask {
-    background-image: linear-gradient(to left, rgba(248,73,96,0.15) 100%, white 0%);
+    background-image: linear-gradient(to left, rgba(248,73,96,0.15) 100%, var(--dark-color) 0%);
 }
 
 .table {

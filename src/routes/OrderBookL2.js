@@ -6,15 +6,31 @@ const OrderBookL2 = () => {
           <h1 className="text-primary lead pt-2">OrderBook L2</h1>
           <div className="p-2 p-0-sm">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et blandit libero, sed lobortis lacus. Nullam vel tortor eget elit bibendum dictum non id odio. Etiam faucibus aliquet dapibus. Donec hendrerit cursus dui a suscipit. Etiam purus ex, pharetra eu tempor eu, elementum sit amet ex. Donec pellentesque ultrices risus non suscipit. Aliquam tempor hendrerit leo at suscipit. Vestibulum lorem augue, tincidunt quis aliquam tincidunt, vehicula quis libero. Curabitur quis magna rhoncus, accumsan nunc id, rhoncus leo. Proin in orci rutrum, laoreet dolor mollis, commodo odio. Phasellus posuere ligula ipsum, at pharetra augue congue sed. Praesent vehicula rhoncus nisi ut interdum. Donec a pulvinar dui, et blandit erat. Cras venenatis nisl efficitur, porta enim in, auctor nunc. Nullam cursus malesuada nisi sed sagittis.
+              To display the orders from "orderBookL2", I recommend the following steps.
             </p>
             <br/>
             <p>
-              Pellentesque sed justo euismod, ullamcorper ex quis, congue sem. Vestibulum pulvinar, justo ut iaculis egestas, odio purus porttitor velit, sed interdum nulla metus vitae lorem. Donec pellentesque libero sem, id lobortis nisi ullamcorper sed. Phasellus justo mauris, tempor vitae libero pretium, porttitor varius mauris. Nunc rhoncus dignissim purus ut feugiat. Nulla mattis et tortor non volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam iaculis pretium nibh, et malesuada dui lacinia quis. Donec porta lacus ut enim varius gravida.
+              The First step is to subscribe to the real-time data with the topic "orderBookL2" using BitMEX websocket API.
             </p>
             <br/>
             <p>
-              Nam placerat ac leo id varius. Fusce velit dolor, convallis quis nulla quis, efficitur euismod leo. Praesent non tincidunt arcu. Nullam euismod arcu ex, mollis faucibus ante scelerisque in. Phasellus eu aliquam erat. Nullam tempor vel orci ac consequat. Duis eget faucibus est, sit amet vehicula augue. Vestibulum orci tortor, dictum non nisl ac, dapibus lobortis ligula.
+              Upon subscription, an image of existing data is received through a "partial" action. This data should be used to initialize the order book table. If any action is received before "partial" action, it should be ignored.
+            </p>
+            <br/>
+            <p>
+              OrderbookL2 is a long list of data with thousands of rows so to optimize the performance I recommend using the "windowing" technique which renders only a small subset of rows at any given time to reduce re-rendering time and number of created DOM nodes.
+            </p>
+            <br/>
+            <p>
+              After initializing the orders table, the next step should be taken based on the value of the "action" key in the message object, which can be "insert", "delete" or "update".
+            </p>
+            <br/>
+            <p>
+              The "orderBookL2" is keyed by a unique ID, instead of price. To convert ID and price interchangeably in order to modify orders array, a couple of formulas are provided by BitMEX API documentation.
+            </p>
+            <br/>
+            <p>
+              The above-mentioned formulas are dependent on the instrument. So the full instrument list should be fetched on startup. So the price can be computed based on instrument and ID. Finally, orders array should be updated considering the received action and id.
             </p>
           </div>
         </Fragment>
